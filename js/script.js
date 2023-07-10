@@ -59,9 +59,9 @@ window.addEventListener('DOMContentLoaded', () => {
         if (num >= 0 && num < 10) {
             return `0${num}`;
         } else {
-           return num; 
+            return num;
         }
-        
+
     }
 
     function setClock(selector, endtime) {
@@ -89,4 +89,62 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     setClock('.timer', deadLine);
+
+    // Modal
+
+
+    const modalTrigger = document.querySelector('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalClousBtn = document.querySelector('[data-close]');
+
+    modalTrigger.addEventListener('click', () => {
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+
+    });
+
+
+
+    function clouseModal() {
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    };
+
+    modalClousBtn.addEventListener('click', clouseModal);//Передача а не Визов функціїї, яка повторяється
+
+    modal.addEventListener('click', (e) => { //Закриття вікна збоку, правильний синтаксис з *е*
+        if (e.target === modal) {
+            clouseModal();
+        }
+    });
+    document.addEventListener('keydown', (e) => { //Єскейп закриває вікно
+        if (e.code === 'Escape' && modal.classList.contains('show')) {
+            clouseModal();
+        }
+    })
 });
+// setTimeout(  
+//     () => {
+//       console.log('Hello after 4 seconds');
+//     },
+//     4 * 1000
+//   );
+
+//   const func = () => {
+//     console.log('Hello after 4 seconds');
+//   };
+//   setTimeout(func, 4 * 1000);
+
+//   // example2.js
+// const rocks = who => {
+//     console.log(who + ' rocks');
+//   };
+//   setTimeout(rocks, 2 * 1000, 'Node.js');
+
+//   // solution1.js
+// const theOneFunc = delay => {
+//     console.log('Hello after ' + delay + ' seconds');
+//   };
+//   setTimeout(theOneFunc, 4 * 1000, 4);
+//   setTimeout(theOneFunc, 8 * 1000, 8);
