@@ -1,3 +1,3 @@
 {
-    "php.validate.executablePath": "d"
+    "php.validate.executablePath": "'php.validate.executablePath'"
 }
